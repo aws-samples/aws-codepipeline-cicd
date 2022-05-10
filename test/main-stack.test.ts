@@ -5,7 +5,7 @@ import { MainStack } from '../lib/main-stack'
 test('Event Bus has been created', () => {
   const app = new cdk.App()
   // WHEN
-  const stack = new MainStack(app, 'MainStack')
+  const stack = new MainStack(app, 'Dev-MainStack')
   // THEN
   const template = Template.fromStack(stack)
   // Assessment
@@ -15,7 +15,7 @@ test('Event Bus has been created', () => {
 test('MainStack has output', () => {
   const app = new cdk.App()
   // WHEN
-  const stack = new MainStack(app, 'MainStack')
+  const stack = new MainStack(app, 'Dev-MainStack')
   // THEN
   const template = Template.fromStack(stack)
   // Assessment

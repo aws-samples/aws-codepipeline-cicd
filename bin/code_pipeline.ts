@@ -7,4 +7,4 @@ import { MainStack } from '../lib/main-stack'
 const app = new cdk.App()
 new CodePipelineStack(app, 'CodePipeline')
 
-new MainStack(app, 'MainStack')
+new MainStack(app, 'Dev-MainStack')

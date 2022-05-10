@@ -30,7 +30,7 @@ clean:
 	git clean -xdf
 ## Deploy application to the AWS account.
 deploy:
-	npm run cdk -- deploy MainStack --require-approval never
+	npm run cdk -- deploy Dev-* --require-approval never
 ## Execute integration tests for verification
 validate:
 	./test/test_validate.sh
