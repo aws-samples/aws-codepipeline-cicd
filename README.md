@@ -3,7 +3,14 @@ The intention of this sample is to put together [DevOps](https://aws.amazon.com/
 After implementing this sample, you will get an AWS CodePipeline with linting, testing, security check, deployment and post-deployment process.
 ## Overview
 This project is based on [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) and uses TypeScript as a primary language.
-The resulting pipeline has following stages
+![pipepline](./docs/pipeline.png)
+The resulting pipeline deploy solution to 3 stages:
+* dev - active development stage
+* test - for advanced testing and integration check
+* prod - production environment
+
+In the dev stage there are 3 steps `Liniting`, `Security` and `UnitTests`. These stups runs in parallel to speedup the process.
+The pipeline will stop execution on each faled step.
 
 ## Prerequsites
 
