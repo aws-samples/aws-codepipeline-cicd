@@ -6,11 +6,14 @@ import { MainStack } from '../lib/main-stack'
 import { DefaultStackSynthesizer } from 'aws-cdk-lib'
 
 const defaultStackSynthesizer = new DefaultStackSynthesizer({
-	fileAssetsBucketName: 'cdk-${Qualifier}-assets-${AWS::AccountId}-${AWS::Region}',
-	bootstrapStackVersionSsmParameter: '/cdk-bootstrap/${Qualifier}/version',
+  /* eslint-disable */
+  // Disable eslint no-template-curly-in-string
+  fileAssetsBucketName: 'cdk-${Qualifier}-assets-${AWS::AccountId}-${AWS::Region}',
+  bootstrapStackVersionSsmParameter: '/cdk-bootstrap/${Qualifier}/version'
+  /* eslint-enable */
 })
 const app = new cdk.App()
 new CodePipelineStack(app, 'CodePipeline', {
-	synthesizer: defaultStackSynthesizer,
+  synthesizer: defaultStackSynthesizer
 })
 new MainStack(app, 'Dev-MainStack')
