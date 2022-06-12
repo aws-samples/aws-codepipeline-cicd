@@ -9,12 +9,12 @@ After execution of the CDK code, following type of resources gets generated:
 
 * CodePipeline
 
-CodePipeline is a continuous delivery service. It is triggered by code checked in into code commit repository. It compiles and packages the code. It deploys the code to various environments such as Development, Quality Assurance and Production. Approval is needed to promote the code from Development to Quality Assurance. Similarly, approval is needed to promote the code from Quality Assurance to Production.
+CodePipeline is a continuous delivery service. It is triggered by code checked in into code commit repository. It compiles and packages the code. It deploys the code to various environments such as Development, Quality Assurance and Production. Approval is needed to promote the code from Development to Quality Assurance. Similarly, approval is needed to promote the code from Quality Assurance to Production. You can find more information in this [article](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
 
 * CloudFormation stacks
 
 The cloud formation stacks groups various AWS services in a collection which can be managed as a single unit. 
-This stack creates the CodeCommit repository and the CICD pipeline consisting of CodePipeline.As a first step, on execution of CDK deploy command, "SampleRepository" gets created.
+This stack creates the CodeCommit repository and the CI/CD pipeline consisting of CodePipeline. As a first step, on execution of CDK deploy command, "SampleRepository" gets created.
 
 ## Architecture
 ![pipepline](./docs/pipeline.png)
@@ -30,7 +30,7 @@ The pipeline will stop execution on each failed step.
 ## Prerequsites & Limitations
 
 This project use AWS CDK v2 based on typescript. The developer laptop/computer should have following software.
-* [cnf_nag](https://github.com/stelligent/cfn_nag)
+* [cnf_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html)
 * [node](https://github.com/nvm-sh/nvm) v16.3.0
 * [npm](https://github.com/nvm-sh/nvm) 7.15.1
