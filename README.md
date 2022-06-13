@@ -1,11 +1,22 @@
 # AWS CodePipeline with CI/CD best practices
-
+## Introduction
 The intention of this sample is to put together [DevOps](https://aws.amazon.com/training/learn-about/devops/) CI/CD best practices and provide a sample for the [AWS CodePipeline](https://aws.amazon.com/codepipeline/).
 After implementing this sample, you will get an AWS CodePipeline with linting, testing, security check, deployment and post-deployment process.
-## Overview
 
-This project is based on [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) and uses TypeScript as a primary language.
+Target technology stack
 
+After execution of the CDK code, following type of resources gets generated:
+
+* CodePipeline
+
+CodePipeline is a continuous delivery service. It is triggered by code checked in into code commit repository. It compiles and packages the code. It deploys the code to various environments such as Development, Quality Assurance and Production. Approval is needed to promote the code from Development to Quality Assurance. Similarly, approval is needed to promote the code from Quality Assurance to Production. You can find more information in this [article](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+
+* CloudFormation stacks
+
+The cloud formation stacks groups various AWS services in a collection which can be managed as a single unit.
+This stack creates the CodeCommit repository and the CI/CD pipeline consisting of CodePipeline. As a first step, on execution of CDK deploy command, "SampleRepository" gets created.
+
+## Architecture
 ![pipepline](./docs/pipeline.png)
 
 The resulting pipeline deploy solution to 3 stages:
@@ -13,18 +24,20 @@ The resulting pipeline deploy solution to 3 stages:
 * test - for advanced testing and integration check
 * prod - production environment
 
-In the dev stage there are 3 steps `Liniting`, `Security` and `UnitTests`. These steps runs in parallel to speedup the process.
+In the dev stage there are 3 steps `Liniting`, `Security` and `UnitTests`. These setups runs in parallel to speedup the process.
 The pipeline will stop execution on each failed step.
 
-## Prerequsites
+## Prerequsites & Limitations
 
-This project use AWS CDK v2 based on [Typescript](https://docs.aws.amazon.com/cdk/v2/guide/work-with-cdk-typescript.html). Make sure you have installed all of the following prerequisites on your development machine:
-
-* [cfn_nag](https://github.com/stelligent/cfn_nag)
+This project use AWS CDK v2 based on typescript. The developer laptop/computer should have following software.
+* [cnf_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html)
 * [node](https://github.com/nvm-sh/nvm) v16.3.0
 * [npm](https://github.com/nvm-sh/nvm) 7.15.1
 
+Limitation
+
+This project is based on [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) and uses TypeScript as a primary language.
 
 ### Installation
 
@@ -51,13 +64,16 @@ Note: Cloud9 should have node and npm installed. You can check the installation 
 node -v
 npm -v
 ```
+### AWS CLI SetUp
 
+[Windows:Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html)
+[Linux, macOS, Unix:Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html)
 
 ## Initial Deployment
 
 For the initial deployment in your AWS account, you can run the following command:
 
-### Cloning The GitHub Repository
+### Cloning the GitHub Repository
 
 ```bash
 git clone --depth 1 https://github.com/aws-samples/aws-codepipeline-cicd.git
@@ -78,6 +94,7 @@ AWS_REGION="eu-west-1"
 ACCOUNT_NUMBER=$(aws sts get-caller-identity --query Account --output text)
 echo "${ACCOUNT_NUMBER}"
 ```
+Troubleshooting: Ensure that your IAM user is authorised for all actions (i.e. has permissions as cloudformation execution role, S3 Create Bucket, SSM put parameter, ECR create repository)
 
 ### Bootstrapping an environment
 
@@ -87,7 +104,6 @@ npm run build
 npm run cdk bootstrap "aws://${ACCOUNT_NUMBER}/${AWS_REGION}"
 ```
 
-
 After successful bootstrap, you should see the following output:
 ```bash
  ⏳  Bootstrapping environment aws://{account#}/eu-west-1...
@@ -95,7 +111,6 @@ After successful bootstrap, you should see the following output:
 ```
 
 For more details refer CDK Bootstraping section in [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html).
-
 
 ### Synthesize a template
 
@@ -175,6 +190,13 @@ To simplify development process and provide an ability to run tests locally we u
 * Execute only unit testing: `make unittest`
 * Deploy to the current account: `make deploy`
 * Cleanup the environment: `make clean`
+
+## Related Resources
+
+* [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+* [AWS CodePipeline documentation](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
+* [AWS CDK](https://aws.amazon.com/cdk/)
+
 
 ## Code of Conduct
 This project has adopted the [Amazon Open Source Code of Conduct](https://aws.github.io/code-of-conduct).
