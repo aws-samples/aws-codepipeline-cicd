@@ -87,15 +87,6 @@ npm run build
 npm run cdk bootstrap "aws://${ACCOUNT_NUMBER}/${AWS_REGION}"
 ```
 
-If you are facing issues with cdk staging bucket conflict, as cdk uses `hnb659fds` as default qualifier, you can specify customize qualifier using context in `cdk.json` file:
-
-```json
-"context": {
-	"@aws-cdk/core:bootstrapQualifier": "cdkdemo",
-
-}
-```
-
 
 After successful bootstrap, you should see the following output:
 ```bash
