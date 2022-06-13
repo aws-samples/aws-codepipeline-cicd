@@ -3,7 +3,7 @@
 The intention of this sample is to put together [DevOps](https://aws.amazon.com/training/learn-about/devops/) CI/CD best practices and provide a sample for the [AWS CodePipeline](https://aws.amazon.com/codepipeline/).
 After implementing this sample, you will get an AWS CodePipeline with linting, testing, security check, deployment and post-deployment process.
 
-Target technology stack
+### Target technology stack
 
 After execution of the CDK code, following type of resources gets generated:
 
@@ -66,8 +66,8 @@ npm -v
 ```
 ### AWS CLI SetUp
 
-[Windows:Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html)
-[Linux, macOS, Unix:Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html)
+- Windows: [Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html)
+- Linux, macOS, Unix: [Configure for HTTPS connections to your CodeCommit repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html)
 
 ## Initial Deployment
 
