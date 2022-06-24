@@ -17,7 +17,7 @@ The cloud formation stacks groups various AWS services in a collection which can
 This stack creates the CodeCommit repository and the CI/CD pipeline consisting of CodePipeline. As a first step, on execution of CDK deploy command, "SampleRepository" gets created.
 
 ## Architecture
-![pipepline](./docs/pipeline.png)
+![pipepline](./docs/aws-codepipeline-cicd.png)
 
 The resulting pipeline deploy solution to 3 stages:
 * dev - active development stage
