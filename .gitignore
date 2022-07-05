@@ -6,6 +6,7 @@ test-results/
 
 # Files
 *.d.ts
+*.js
 package-lock.json
 test-report.xml
 
