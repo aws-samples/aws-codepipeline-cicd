@@ -1,3 +1,5 @@
+[![main](https://github.com/aws-samples/aws-codepipeline-cicd/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/aws-samples/aws-codepipeline-cicd/actions/workflows/pipeline.yaml)
+
 # AWS CodePipeline with CI/CD best practices
 ## Introduction
 The intention of this sample is to put together [DevOps](https://aws.amazon.com/training/learn-about/devops/) CI/CD best practices and provide a sample for the [AWS CodePipeline](https://aws.amazon.com/codepipeline/).
@@ -30,10 +32,10 @@ The pipeline will stop execution on each failed step.
 ## Prerequsites & Limitations
 
 This project use AWS CDK v2 based on typescript. The developer laptop/computer should have following software.
-* [cnf_nag](https://github.com/stelligent/cfn_nag) v0.8.10
+* [cfn_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html)
-* [node](https://github.com/nvm-sh/nvm) v16.3.0
-* [npm](https://github.com/nvm-sh/nvm) 7.15.1
+* [node](https://nodejs.org/en/download/) v16
+* [npm](https://nodejs.org/en/download/) v8
 
 Limitation
 
@@ -46,10 +48,11 @@ This project is based on [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/doc
 If you are using MacOS, you can install the prerequisites by running the following command in your preferred terminal or also on Linux using [homebrew for Linux](https://docs.brew.sh/Homebrew-on-Linux):
 
 ```bash
-nvm install 16.3
+brew install node@16
+echo 'export PATH="/usr/local/opt/node@16/bin:$PATH"' >> ~/.bash_profile
 brew install git-remote-codecommit
 brew install ruby brew-gem
-brew gem install cfn-nag
+gem install cfn-nag
 ```
 #### AWS Cloud9
 
@@ -73,7 +76,11 @@ npm -v
 
 For the initial deployment in your AWS account, you can run the following command:
 
-### Cloning the GitHub Repository
+### Getting the code
+
+Dowload the latest __Source code__ from [release](https://github.com/aws-samples/aws-codepipeline-cicd/releases) and unzip the downloaded file into a folder.
+
+As an alternative option you may clone the project and delete the .git folder from it. Below you can see an example.
 
 ```bash
 git clone --depth 1 https://github.com/aws-samples/aws-codepipeline-cicd.git
