@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Warming
         run: make warming
-      - name: Build
+      - name: Linting
         run: make linting
   # Security check
   Security:
@@ -37,7 +37,11 @@ jobs:
       - name: Warming
         run: make warming
       - name: Build
-        run: make linting
+        run: make build
+      - name: Security
+        uses: stelligent/cfn_nag@master
+        with:
+          input_path: ./cdk.out
   # Unit tests
   UnitTest:
     runs-on: ubuntu-latest
@@ -45,7 +49,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Warming
         run: make warming
-      - name: Build
+      - name: Unit tests
         run: make unittest
   # Release creation
   Release:
