@@ -66,5 +66,14 @@ jobs:
     needs: [Build, Linting, Security, UnitTest]
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "Placeholder"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0
+          release_name: Code
+          body: "Automatic release from the CI pipeline"
