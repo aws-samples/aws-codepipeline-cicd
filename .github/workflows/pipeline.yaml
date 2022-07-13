@@ -72,16 +72,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Getting release ID"
+          echo "Getting current release ID"
           response=$(curl \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: token ${GITHUB_TOKEN}" \
             https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/latest)
           id=$(echo ${response} | jq '.id')
           echo "Release ID is: ${id}"
+          echo "Deleting release"
           curl \
-            -X PATCH \
+            -X DELETE \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: token ${GITHUB_TOKEN}" \
-            "https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/${id}" \
+            "https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/${id}"
+          echo "Creating a new release"
+          curl \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token <TOKEN>" \
+            https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases \
             -d '{"tag_name":"v1.0.0","target_commitish":"main","name":"Code","body":"Automatic release"}'
