@@ -1,0 +1,57 @@
+---
+# This is an a CI pipeline
+name: main
+# Controls when the workflow run
+on:
+  push:
+    # Triggers the workflow for feature branches and main branch
+    branches:
+      - "feature/*"
+      - "main"
+# Run build, linting, security and unit testing in parallel,
+# and in the main branch only create a release
+jobs:
+  # Build project.
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Warming
+        run: make warming
+      - name: Build
+        run: make build
+  # Linting check
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Warming
+        run: make warming
+      - name: Build
+        run: make linting
+  # Security check
+  Security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Warming
+        run: make warming
+      - name: Build
+        run: make linting
+  # Unit tests
+  UnitTest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Warming
+        run: make warming
+      - name: Build
+        run: make unittest
+  # Release creation
+  Release:
+    # Move forward only if all jobs above are successed
+    needs: [Build, Linting, Security, UnitTest]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: echo "Placeholder"
