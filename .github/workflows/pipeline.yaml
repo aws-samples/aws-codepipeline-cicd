@@ -68,9 +68,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Create Release
+      - name: Update Release
         id: release
-        uses: actions/create-release@v1
+        uses: actions/update-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
