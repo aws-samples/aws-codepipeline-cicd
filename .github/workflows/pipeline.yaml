@@ -69,11 +69,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Update Release
-        id: release
-        uses: actions/update-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v1.0.0
-          release_name: Code
-          body: "Automatic release from the CI pipeline"
+        run: |
+          curl \
+            -X PATCH \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/Code \
+            -d '{"tag_name":"v1.0.0","target_commitish":"main","name":"v1.0.0","body":"Automatic release","draft":false,"prerelease":false}'
