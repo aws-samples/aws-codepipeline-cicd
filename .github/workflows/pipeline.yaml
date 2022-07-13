@@ -45,7 +45,7 @@ jobs:
         uses: stelligent/cfn_nag@master
         with:
           input_path: ./cdk.out
-          extra_args: -t ..\*.template.json
+          extra_args: -t ..*\.template\.json
       # https://github.com/stelligent/cfn_nag/issues/582
       - name: Fail if cfn_nag scan contains failures
         # sum cfn_nag failures and return it as exit code
