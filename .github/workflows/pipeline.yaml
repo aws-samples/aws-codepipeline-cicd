@@ -68,21 +68,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: List release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: token ${GITHUB_TOKEN}" \
-            https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/latest
       - name: Update Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "Getting release ID"
+          response=$(curl \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/latest)
+          id=$(echo ${response} | jq '.id')
+          echo "Release ID is: ${id}"
           curl \
             -X PATCH \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: token ${GITHUB_TOKEN}" \
-            https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/1 \
+            "https://api.github.com/repos/aws-samples/aws-codepipeline-cicd/releases/${id}" \
             -d '{"tag_name":"v1.0.0","target_commitish":"main","name":"Code","body":"Automatic release"}'
