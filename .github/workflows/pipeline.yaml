@@ -60,3 +60,16 @@ jobs:
         run: make warming
       - name: Unit tests
         run: make unittest
+
+# Deployment example
+  Deploy:
+    # Move forward only on main branch
+    if: ${{ github.ref == 'refs/heads/main' }}
+    # Move forward only if all jobs above are successed
+    needs: [Build, Linting, Security, UnitTest]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Deploy
+        run: echo "Deploying placeholder"

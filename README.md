@@ -1,3 +1,5 @@
+[![main](https://github.com/aws-samples/aws-codepipeline-cicd/actions/workflows/pipeline.yaml/badge.svg)](https://github.com/aws-samples/aws-codepipeline-cicd/actions/workflows/pipeline.yaml)
+
 # AWS CodePipeline with CI/CD best practices
 ## Introduction
 The intention of this sample is to put together [DevOps](https://aws.amazon.com/training/learn-about/devops/) CI/CD best practices and provide a sample for the [AWS CodePipeline](https://aws.amazon.com/codepipeline/).
