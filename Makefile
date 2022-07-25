@@ -15,11 +15,10 @@ linting:
 	npm run eslint
 ## This step checks the code base with security tools
 security:
-	cfn_nag_scan -i ./cdk.out -t ..\*.template.json
+	cfn_nag_scan -i ./cdk.out -t .\*.template.json
 ## This step executes unit tests for the code base
 unittest:
 	npm run test
-
 ## This step cleans up the environment from the secret values
 cooling:
 	@echo "Finish the project building"
@@ -28,9 +27,9 @@ cooling:
 ## Cleanup the whole environment. Remove all temporary files
 clean:
 	git clean -xdf
-## Deploy application to the AWS account.
+## Deploy application to the Dev AWS account manually
 deploy:
-	npm run cdk -- deploy Dev-* --require-approval never
+	npm run cdk -- deploy Dev-*
 ## Execute integration tests for verification
 validate:
 	./test/test_validate.sh
