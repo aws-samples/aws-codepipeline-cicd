@@ -33,3 +33,7 @@ deploy:
 ## Execute integration tests for verification
 validate:
 	./test/test_validate.sh
+
+## Update NOTICE file
+notice:
+	npx generate-license-file --input package.json --output NOTICE --overwrite
