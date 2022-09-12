@@ -22,6 +22,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-promise": "^6.0.0",
+    "generate-license-file": "^2.0.0",
     "jest": "^26.4.2",
     "jest-junit": "^14.0.0",
     "ts-jest": "^26.2.0",
@@ -41,7 +42,8 @@
     "reporters": [
       "default",
       [
-        "jest-junit", {
+        "jest-junit",
+        {
           "outputName": "test-report.xml"
         }
       ]
