@@ -1,0 +1,12 @@
+# Folders
+cdk.out/
+coverage/
+node_modules/
+test-results/
+
+# Files
+*.d.ts
+*.js
+package-lock.json
+test-report.xml
+
