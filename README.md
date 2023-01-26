@@ -35,11 +35,11 @@ In the Dev stage there are 3 steps `Linting`, `Security` and `Unit Tests`. These
 ## Prerequsites & Limitations
 
 This project use AWS CDK v2 based on typescript. The developer laptop/computer should have following software.
-* [AWS CDK v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) v2.41.0
+* [AWS CDK v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) v2.61.0
 * [cfn_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html) v1.16
-* [node](https://nodejs.org/en/download/) v16
-* [typescript](https://www.typescriptlang.org/) v4.7.3
+* [node](https://nodejs.org/en/download/) v19
+* [typescript](https://www.typescriptlang.org/) v4.9.4
 
 Limitation
 
@@ -52,11 +52,10 @@ This project is based on [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/doc
 If you are using MacOS, you can install the prerequisites by running the following command in your preferred terminal or also on Linux using [homebrew for Linux](https://docs.brew.sh/Homebrew-on-Linux):
 
 ```bash
-brew install node@16
-echo 'export PATH="/usr/local/opt/node@16/bin:$PATH"' >> ~/.bash_profile
+brew install node
 brew install git-remote-codecommit
 brew install ruby brew-gem
-gem install cfn-nag
+brew-gem install cfn-nag
 ```
 #### AWS Cloud9
 
@@ -118,7 +117,7 @@ npm run cdk bootstrap "aws://${ACCOUNT_NUMBER}/${AWS_REGION}"
 After successful bootstrap, you should see the following output:
 ```bash
  ⏳  Bootstrapping environment aws://{account#}/eu-west-1...
- ✅  Environment aws://{account#}/eu-west-1 bootstrapped
+ ✅  Environment aws://{account#}/eu-west-1 bootstrapped.
 ```
 
 For more details refer CDK Bootstraping section in [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html).
