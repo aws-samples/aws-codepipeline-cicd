@@ -20,7 +20,7 @@ AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) ser
 
 * CloudFormation stacks
 
-CloudFormation is AWS' service for provisioning infrastructure as code (IaC) through the use of YAML or JSON templates. It uses stacks to logically group various AWS services into a collection, which can be managed as a single unit. These stacks can create things like a AWS CodeCommit repository and a AWS CodePipeline CI/CD pipeline.
+CloudFormation is an AWS service for provisioning infrastructure as code (IaC) through the use of YAML or JSON templates. It uses stacks to logically group various AWS services into a collection, which can be managed as a single unit. These stacks can create things like a AWS CodeCommit repository and a AWS CodePipeline CI/CD pipeline.
 
 ## Architecture
 ![pipepline](./docs/aws-codepipeline-cicd.png)
