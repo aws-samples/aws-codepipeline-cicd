@@ -24,6 +24,8 @@ export class CodePipelineStack extends Stack {
     })
 
     const pipeline = new CodePipeline(this, 'Pipeline', {
+      crossAccountKeys: true,
+      enableKeyRotation: true,
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.codeCommit(repo, 'main'),
         installCommands: [
