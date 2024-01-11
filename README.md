@@ -35,11 +35,11 @@ In the Dev stage there are 3 steps `Linting`, `Security` and `Unit Tests`. These
 ## Prerequsites & Limitations
 
 This project use AWS CDK v2 based on typescript. The developer laptop/computer should have following software.
-* [AWS CDK v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) v2.61.0
+* [AWS CDK v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) v2.118.0
 * [cfn_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html) v1.16
-* [node](https://nodejs.org/en/download/) v19
-* [typescript](https://www.typescriptlang.org/) v4.9.4
+* [node](https://nodejs.org/en/download/) v20
+* [typescript](https://www.typescriptlang.org/) v5.3.3
 
 Limitation
 
