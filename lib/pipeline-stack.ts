@@ -2,8 +2,8 @@ import { Repository } from 'aws-cdk-lib/aws-codecommit'
 import { BuildSpec } from 'aws-cdk-lib/aws-codebuild'
 import { PolicyStatement } from 'aws-cdk-lib/aws-iam'
 import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines'
-import { CfnOutput, Stack, StackProps } from 'aws-cdk-lib'
-import { Construct } from 'constructs'
+import { CfnOutput, Stack, type StackProps } from 'aws-cdk-lib'
+import { type Construct } from 'constructs'
 import { Deployment } from './stages'
 
 export class CodePipelineStack extends Stack {
