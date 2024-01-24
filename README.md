@@ -39,7 +39,6 @@ This project use AWS CDK v2 based on typescript. The developer laptop/computer s
 * [cfn_nag](https://github.com/stelligent/cfn_nag) v0.8.10
 * [git-remote-codecommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-git-remote-codecommit.html) v1.16
 * [node](https://nodejs.org/en/download/) v20
-* [typescript](https://www.typescriptlang.org/) v5.3.3
 
 Limitation
 
@@ -97,14 +96,13 @@ rm -rf ./.git
 
 ### Connect to AWS Account
 
-It could be temporary security token or landing zone auth. Make sure you are using the correct account and region by running the following command:
+You can connect by using a temporary security token or landing zone authentication. To confirm that you are using the correct account and AWS Region, run the following commands:
 
-```
+```bash
 AWS_REGION="eu-west-1"
 ACCOUNT_NUMBER=$(aws sts get-caller-identity --query Account --output text)
 echo "${ACCOUNT_NUMBER}"
 ```
-Troubleshooting: Ensure that your IAM user is authorised for all actions (i.e. has permissions as cloudformation execution role, S3 Create Bucket, SSM put parameter, ECR create repository)
 
 ### Bootstrapping an environment
 
@@ -120,18 +118,18 @@ After successful bootstrap, you should see the following output:
  ✅  Environment aws://{account#}/eu-west-1 bootstrapped.
 ```
 
-For more details refer CDK Bootstraping section in [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html).
+For more details refer CDK Bootstraping section in [AWS CDK v2](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html).
 
 ### Synthesize a template
 
 To synthesize a CDK app, use the `cdk synth` command:
 
-```
+```bash
 npm run cdk synth
 ```
 You should see following output:
 
-```
+```bash
 Successfully synthesized to <path-to-directory>/aws-codepipeline-cicd/cdk.out
 Supply a stack id (CodePipeline, Dev-MainStack) to display its template.
 ```
@@ -140,7 +138,7 @@ Supply a stack id (CodePipeline, Dev-MainStack) to display its template.
 
 Now, you can deploy the CodePipeline stack by running following command. This is required as it will create the necessary prerequisites(CodeCommit Repository) for the CodePipeline.
 
-```
+```bash
 npm run cdk -- deploy CodePipeline --require-approval never
 ```
 
@@ -168,11 +166,10 @@ You can see the CodePipeline initial execution in [AWS CodePipeline console](htt
 
 You can set up remote origin as a `SampleRepository` and create required main branch by running the following command:
 
-```
+```bash
 RepoName=$(aws cloudformation describe-stacks --stack-name CodePipeline --query "Stacks[0].Outputs[?OutputKey=='RepositoryName'].OutputValue" --output text)
 echo "${RepoName}"
 
-#
 git init
 git branch -m master main
 git remote add origin codecommit://${RepoName}
@@ -212,7 +209,7 @@ Please be aware that some resources aren't automatically deleted and either need
 
 ## Related Resources
 
-* [Creating an IAM user in your AWS account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+* [Get started with common tasks in IAM Identity Center](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)
 * [AWS CodePipeline documentation](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html)
 * [AWS CDK](https://aws.amazon.com/cdk/)
 
