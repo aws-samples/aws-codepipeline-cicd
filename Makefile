@@ -12,7 +12,7 @@ build:
 	npm run cdk synth
 ## This step checks the code base with linting tools
 linting:
-	npm run eslint
+	npm run lint
 ## This step checks the code base with security tools
 security:
 	cfn_nag_scan -i ./cdk.out -t .\*.template.json

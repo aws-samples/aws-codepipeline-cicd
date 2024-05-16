@@ -6,6 +6,7 @@ on:
   push:
     # Triggers the workflow for feature branches and main branch
     branches:
+      - "bugfix/*"
       - "feature/*"
       - "main"
 # Run build, linting, security and unit testing in parallel,
